@@ -1,0 +1,4 @@
+access training content:
+  title: 'Access training content'
+  description: 'Gives third level permission to the users.'
+  restrict access: true

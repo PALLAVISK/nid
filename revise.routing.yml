@@ -1,0 +1,74 @@
+revise.form:
+ path: '/myform'
+ defaults:
+   _title: 'Application form'
+   _form: '\Drupal\revise\Form\ResumeForm'
+ requirements:
+   _permission: 'access content' #for normal form#
+
+revise.config:
+  path: '/config-form'
+  defaults:
+   _title: 'Configuration form'
+   _form: '\Drupal\revise\Form\ConfigForm'
+  requirements:
+   _permission: 'administer site configuration' #for config form#
+
+revise.demo-of-routing:
+  path: '/routing-form' 
+  defaults:
+    _controller: '\Drupal\revise\Controller\HelloController::content' 
+    _title: 'ROUTING Form'
+  requirements:
+    _permission: 'access content' #for routing#
+
+revise.demo-of-routing2:
+  path: '/dynamicroute/{user}' 
+  defaults:
+    _controller: '\Drupal\revise\Controller\DynamicRoute::content' 
+    _title: 'ROUTING Form'
+  requirements:
+    _permission: 'access content' #for dynamic routing#
+
+revise.servicetrial:
+  path: '/user-of-service' 
+  defaults:
+    _controller: '\Drupal\revise\Controller\DBcontroller::say' 
+    _title: 'ROUTING Form'
+  requirements:
+    _permission: 'access training content' #service use#
+
+revise.nodeparameter:
+  path: '/foo/{node1}'
+  defaults:
+    _controller: '\Drupal\revise\Controller\DynamicRoute::foo'
+  options:
+    parameters:
+      node1:
+        type: entity:node
+  requirements:
+    _permission: 'access content'  #passing simple node#
+
+revise.edit:
+  path: '/examle-path/{node}'
+  defaults:
+    _controller: '\Drupal\revise\Controller\DynamicRoute::kuchbhi'
+    _title: ''
+  requirements:
+    _example_access_check: 'TRUE'
+  options:
+    parameters:
+      node:
+        type: entity:node   #Creating custom access check - 1#
+
+revise.test:
+  path: '/examle-path-test/{node}'
+  defaults:
+    _controller: '\Drupal\revise\Controller\DynamicRoute::kuchbhi'
+    _title: ''
+  requirements:
+    _custom_access: '\Drupal\revise\Controller\DynamicRoute::access'
+  options:
+    parameters:
+      node:
+        type: entity:node  #Creating custom access check - 2#

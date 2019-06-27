@@ -1,0 +1,5 @@
+name: My revise
+type: module
+description: created for practise.
+package: custom
+core: 8.x

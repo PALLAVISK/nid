@@ -1,0 +1,9 @@
+services:
+ revise.say_hello:
+   class: Drupal\revise\service\HelloServices
+
+ revise.access_checker:
+    class: Drupal\revise\service\CustomAccessCheck
+    arguments: ['@current_user']
+    tags:
+      - { name: access_check, applies_to: _example_access_check }
